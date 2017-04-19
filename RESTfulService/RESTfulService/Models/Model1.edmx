@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="quizModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DobreOdpowiedzi">
+          <Key>
+            <PropertyRef Name="idDobreOdpowiedzi" />
+          </Key>
+          <Property Name="idDobreOdpowiedzi" Type="int" Nullable="false" />
+          <Property Name="DobreOdpowiedzi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pytania_idPytania" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pytania">
+          <Key>
+            <PropertyRef Name="idPytania" />
+          </Key>
+          <Property Name="idPytania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pytania" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZleOdpowiedzi">
+          <Key>
+            <PropertyRef Name="idZleOdpowiedzi" />
+          </Key>
+          <Property Name="idZleOdpowiedzi" Type="int" Nullable="false" />
+          <Property Name="ZleOdpowiedzi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pytania_idPytania" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DobreOdpowiedzi_Pytania">
+          <End Role="Pytania" Type="Self.Pytania" Multiplicity="1" />
+          <End Role="DobreOdpowiedzi" Type="Self.DobreOdpowiedzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pytania">
+              <PropertyRef Name="idPytania" />
+            </Principal>
+            <Dependent Role="DobreOdpowiedzi">
+              <PropertyRef Name="Pytania_idPytania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZleOdpowiedzi_Pytania">
+          <End Role="Pytania" Type="Self.Pytania" Multiplicity="1" />
+          <End Role="ZleOdpowiedzi" Type="Self.ZleOdpowiedzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pytania">
+              <PropertyRef Name="idPytania" />
+            </Principal>
+            <Dependent Role="ZleOdpowiedzi">
+              <PropertyRef Name="Pytania_idPytania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="quizModelStoreContainer">
+          <EntitySet Name="DobreOdpowiedzi" EntityType="Self.DobreOdpowiedzi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pytania" EntityType="Self.Pytania" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZleOdpowiedzi" EntityType="Self.ZleOdpowiedzi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DobreOdpowiedzi_Pytania" Association="Self.FK_DobreOdpowiedzi_Pytania">
+            <End Role="Pytania" EntitySet="Pytania" />
+            <End Role="DobreOdpowiedzi" EntitySet="DobreOdpowiedzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZleOdpowiedzi_Pytania" Association="Self.FK_ZleOdpowiedzi_Pytania">
+            <End Role="Pytania" EntitySet="Pytania" />
+            <End Role="ZleOdpowiedzi" EntitySet="ZleOdpowiedzi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="quizModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DobreOdpowiedzi">
+          <Key>
+            <PropertyRef Name="idDobreOdpowiedzi" />
+          </Key>
+          <Property Name="idDobreOdpowiedzi" Type="Int32" Nullable="false" />
+          <Property Name="DobreOdpowiedzi1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pytania_idPytania" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pytania" Relationship="Self.FK_DobreOdpowiedzi_Pytania" FromRole="DobreOdpowiedzi" ToRole="Pytania" />
+        </EntityType>
+        <EntityType Name="Pytania">
+          <Key>
+            <PropertyRef Name="idPytania" />
+          </Key>
+          <Property Name="idPytania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pytania1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DobreOdpowiedzi" Relationship="Self.FK_DobreOdpowiedzi_Pytania" FromRole="Pytania" ToRole="DobreOdpowiedzi" />
+          <NavigationProperty Name="ZleOdpowiedzi" Relationship="Self.FK_ZleOdpowiedzi_Pytania" FromRole="Pytania" ToRole="ZleOdpowiedzi" />
+        </EntityType>
+        <EntityType Name="ZleOdpowiedzi">
+          <Key>
+            <PropertyRef Name="idZleOdpowiedzi" />
+          </Key>
+          <Property Name="idZleOdpowiedzi" Type="Int32" Nullable="false" />
+          <Property Name="ZleOdpowiedzi1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pytania_idPytania" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pytania" Relationship="Self.FK_ZleOdpowiedzi_Pytania" FromRole="ZleOdpowiedzi" ToRole="Pytania" />
+        </EntityType>
+        <Association Name="FK_DobreOdpowiedzi_Pytania">
+          <End Role="Pytania" Type="Self.Pytania" Multiplicity="1" />
+          <End Role="DobreOdpowiedzi" Type="Self.DobreOdpowiedzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pytania">
+              <PropertyRef Name="idPytania" />
+            </Principal>
+            <Dependent Role="DobreOdpowiedzi">
+              <PropertyRef Name="Pytania_idPytania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZleOdpowiedzi_Pytania">
+          <End Role="Pytania" Type="Self.Pytania" Multiplicity="1" />
+          <End Role="ZleOdpowiedzi" Type="Self.ZleOdpowiedzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pytania">
+              <PropertyRef Name="idPytania" />
+            </Principal>
+            <Dependent Role="ZleOdpowiedzi">
+              <PropertyRef Name="Pytania_idPytania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="quizEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DobreOdpowiedzi" EntityType="Self.DobreOdpowiedzi" />
+          <EntitySet Name="Pytania" EntityType="Self.Pytania" />
+          <EntitySet Name="ZleOdpowiedzi" EntityType="Self.ZleOdpowiedzi" />
+          <AssociationSet Name="FK_DobreOdpowiedzi_Pytania" Association="Self.FK_DobreOdpowiedzi_Pytania">
+            <End Role="Pytania" EntitySet="Pytania" />
+            <End Role="DobreOdpowiedzi" EntitySet="DobreOdpowiedzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZleOdpowiedzi_Pytania" Association="Self.FK_ZleOdpowiedzi_Pytania">
+            <End Role="Pytania" EntitySet="Pytania" />
+            <End Role="ZleOdpowiedzi" EntitySet="ZleOdpowiedzi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="quizModelStoreContainer" CdmEntityContainer="quizEntities">
+          <EntitySetMapping Name="DobreOdpowiedzi">
+            <EntityTypeMapping TypeName="quizModel.DobreOdpowiedzi">
+              <MappingFragment StoreEntitySet="DobreOdpowiedzi">
+                <ScalarProperty Name="idDobreOdpowiedzi" ColumnName="idDobreOdpowiedzi" />
+                <ScalarProperty Name="DobreOdpowiedzi1" ColumnName="DobreOdpowiedzi" />
+                <ScalarProperty Name="Pytania_idPytania" ColumnName="Pytania_idPytania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pytania">
+            <EntityTypeMapping TypeName="quizModel.Pytania">
+              <MappingFragment StoreEntitySet="Pytania">
+                <ScalarProperty Name="idPytania" ColumnName="idPytania" />
+                <ScalarProperty Name="Pytania1" ColumnName="Pytania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZleOdpowiedzi">
+            <EntityTypeMapping TypeName="quizModel.ZleOdpowiedzi">
+              <MappingFragment StoreEntitySet="ZleOdpowiedzi">
+                <ScalarProperty Name="idZleOdpowiedzi" ColumnName="idZleOdpowiedzi" />
+                <ScalarProperty Name="ZleOdpowiedzi1" ColumnName="ZleOdpowiedzi" />
+                <ScalarProperty Name="Pytania_idPytania" ColumnName="Pytania_idPytania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

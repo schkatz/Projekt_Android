@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="quizModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DobreOdpowiedzi">
+    <Key>
+      <PropertyRef Name="idDobreOdpowiedzi" />
+    </Key>
+    <Property Name="idDobreOdpowiedzi" Type="Int32" Nullable="false" />
+    <Property Name="DobreOdpowiedzi1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pytania_idPytania" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pytania" Relationship="Self.FK_DobreOdpowiedzi_Pytania" FromRole="DobreOdpowiedzi" ToRole="Pytania" />
+  </EntityType>
+  <EntityType Name="Pytania">
+    <Key>
+      <PropertyRef Name="idPytania" />
+    </Key>
+    <Property Name="idPytania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pytania1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DobreOdpowiedzi" Relationship="Self.FK_DobreOdpowiedzi_Pytania" FromRole="Pytania" ToRole="DobreOdpowiedzi" />
+    <NavigationProperty Name="ZleOdpowiedzi" Relationship="Self.FK_ZleOdpowiedzi_Pytania" FromRole="Pytania" ToRole="ZleOdpowiedzi" />
+  </EntityType>
+  <EntityType Name="ZleOdpowiedzi">
+    <Key>
+      <PropertyRef Name="idZleOdpowiedzi" />
+    </Key>
+    <Property Name="idZleOdpowiedzi" Type="Int32" Nullable="false" />
+    <Property Name="ZleOdpowiedzi1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pytania_idPytania" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pytania" Relationship="Self.FK_ZleOdpowiedzi_Pytania" FromRole="ZleOdpowiedzi" ToRole="Pytania" />
+  </EntityType>
+  <Association Name="FK_DobreOdpowiedzi_Pytania">
+    <End Role="Pytania" Type="Self.Pytania" Multiplicity="1" />
+    <End Role="DobreOdpowiedzi" Type="Self.DobreOdpowiedzi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pytania">
+        <PropertyRef Name="idPytania" />
+      </Principal>
+      <Dependent Role="DobreOdpowiedzi">
+        <PropertyRef Name="Pytania_idPytania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZleOdpowiedzi_Pytania">
+    <End Role="Pytania" Type="Self.Pytania" Multiplicity="1" />
+    <End Role="ZleOdpowiedzi" Type="Self.ZleOdpowiedzi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pytania">
+        <PropertyRef Name="idPytania" />
+      </Principal>
+      <Dependent Role="ZleOdpowiedzi">
+        <PropertyRef Name="Pytania_idPytania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="quizEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DobreOdpowiedzi" EntityType="Self.DobreOdpowiedzi" />
+    <EntitySet Name="Pytania" EntityType="Self.Pytania" />
+    <EntitySet Name="ZleOdpowiedzi" EntityType="Self.ZleOdpowiedzi" />
+    <AssociationSet Name="FK_DobreOdpowiedzi_Pytania" Association="Self.FK_DobreOdpowiedzi_Pytania">
+      <End Role="Pytania" EntitySet="Pytania" />
+      <End Role="DobreOdpowiedzi" EntitySet="DobreOdpowiedzi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZleOdpowiedzi_Pytania" Association="Self.FK_ZleOdpowiedzi_Pytania">
+      <End Role="Pytania" EntitySet="Pytania" />
+      <End Role="ZleOdpowiedzi" EntitySet="ZleOdpowiedzi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
