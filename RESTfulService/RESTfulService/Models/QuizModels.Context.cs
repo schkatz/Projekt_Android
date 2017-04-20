@@ -13,10 +13,10 @@ namespace RESTfulService.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class quizEntities : DbContext
+    public partial class quizsEntities : DbContext
     {
-        public quizEntities()
-            : base("name=quizEntities")
+        public quizsEntities()
+            : base("name=quizsEntities")
         {
         }
     
@@ -27,6 +27,8 @@ namespace RESTfulService.Models
     
         public virtual DbSet<DobreOdpowiedzi> DobreOdpowiedzi { get; set; }
         public virtual DbSet<Pytania> Pytania { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TabelaWynikow> TabelaWynikow { get; set; }
         public virtual DbSet<ZleOdpowiedzi> ZleOdpowiedzi { get; set; }
     }
 }

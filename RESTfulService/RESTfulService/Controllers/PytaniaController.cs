@@ -12,17 +12,17 @@ using RESTfulService.Models;
 
 namespace RESTfulService.Controllers
 {
-    public class PytaniasController : ApiController
+    public class PytaniaController : ApiController
     {
-        private quizEntities db = new quizEntities();
+        private quizsEntities db = new quizsEntities();
 
-        // GET: api/Pytanias
+        // GET: api/Pytania
         public IQueryable<Pytania> GetPytania()
         {
             return db.Pytania;
         }
 
-        // GET: api/Pytanias/5
+        // GET: api/Pytania/5
         [ResponseType(typeof(Pytania))]
         public IHttpActionResult GetPytania(int id)
         {
@@ -35,7 +35,7 @@ namespace RESTfulService.Controllers
             return Ok(pytania);
         }
 
-        // PUT: api/Pytanias/5
+        // PUT: api/Pytania/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPytania(int id, Pytania pytania)
         {
@@ -70,7 +70,7 @@ namespace RESTfulService.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Pytanias
+        // POST: api/Pytania
         [ResponseType(typeof(Pytania))]
         public IHttpActionResult PostPytania(Pytania pytania)
         {
@@ -85,7 +85,7 @@ namespace RESTfulService.Controllers
             return CreatedAtRoute("DefaultApi", new { id = pytania.idPytania }, pytania);
         }
 
-        // DELETE: api/Pytanias/5
+        // DELETE: api/Pytania/5
         [ResponseType(typeof(Pytania))]
         public IHttpActionResult DeletePytania(int id)
         {

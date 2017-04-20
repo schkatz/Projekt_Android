@@ -12,17 +12,17 @@ using RESTfulService.Models;
 
 namespace RESTfulService.Controllers
 {
-    public class DobreOdpowiedzisController : ApiController
+    public class DobreOdpowiedziController : ApiController
     {
-        private quizEntities db = new quizEntities();
+        private quizsEntities db = new quizsEntities();
 
-        // GET: api/DobreOdpowiedzis
+        // GET: api/DobreOdpowiedzi
         public IQueryable<DobreOdpowiedzi> GetDobreOdpowiedzi()
         {
             return db.DobreOdpowiedzi;
         }
 
-        // GET: api/DobreOdpowiedzis/5
+        // GET: api/DobreOdpowiedzi/5
         [ResponseType(typeof(DobreOdpowiedzi))]
         public IHttpActionResult GetDobreOdpowiedzi(int id)
         {
@@ -35,7 +35,7 @@ namespace RESTfulService.Controllers
             return Ok(dobreOdpowiedzi);
         }
 
-        // PUT: api/DobreOdpowiedzis/5
+        // PUT: api/DobreOdpowiedzi/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDobreOdpowiedzi(int id, DobreOdpowiedzi dobreOdpowiedzi)
         {
@@ -70,7 +70,7 @@ namespace RESTfulService.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/DobreOdpowiedzis
+        // POST: api/DobreOdpowiedzi
         [ResponseType(typeof(DobreOdpowiedzi))]
         public IHttpActionResult PostDobreOdpowiedzi(DobreOdpowiedzi dobreOdpowiedzi)
         {
@@ -80,27 +80,12 @@ namespace RESTfulService.Controllers
             }
 
             db.DobreOdpowiedzi.Add(dobreOdpowiedzi);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (DobreOdpowiedziExists(dobreOdpowiedzi.idDobreOdpowiedzi))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = dobreOdpowiedzi.idDobreOdpowiedzi }, dobreOdpowiedzi);
         }
 
-        // DELETE: api/DobreOdpowiedzis/5
+        // DELETE: api/DobreOdpowiedzi/5
         [ResponseType(typeof(DobreOdpowiedzi))]
         public IHttpActionResult DeleteDobreOdpowiedzi(int id)
         {

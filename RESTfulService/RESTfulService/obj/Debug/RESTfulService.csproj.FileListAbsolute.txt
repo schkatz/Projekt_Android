@@ -27,6 +27,5 @@ C:\Users\Pros\Source\Antek\Projekt_Android\RESTfulService\RESTfulService\bin\New
 C:\Users\Pros\Source\Antek\Projekt_Android\RESTfulService\RESTfulService\bin\System.Net.Http.Formatting.xml
 C:\Users\Pros\Source\Antek\Projekt_Android\RESTfulService\RESTfulService\bin\System.Web.Http.xml
 C:\Users\Pros\Source\Antek\Projekt_Android\RESTfulService\RESTfulService\bin\System.Web.Http.WebHost.xml
-C:\Users\Pros\Source\Antek\Projekt_Android\RESTfulService\RESTfulService\obj\Debug\RESTfulService.csprojResolveAssemblyReference.cache
 C:\Users\Pros\Source\Antek\Projekt_Android\RESTfulService\RESTfulService\obj\Debug\RESTfulService.dll
 C:\Users\Pros\Source\Antek\Projekt_Android\RESTfulService\RESTfulService\obj\Debug\RESTfulService.pdb

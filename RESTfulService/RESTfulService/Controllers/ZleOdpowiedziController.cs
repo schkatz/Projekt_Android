@@ -12,17 +12,17 @@ using RESTfulService.Models;
 
 namespace RESTfulService.Controllers
 {
-    public class ZleOdpowiedzisController : ApiController
+    public class ZleOdpowiedziController : ApiController
     {
-        private quizEntities db = new quizEntities();
+        private quizsEntities db = new quizsEntities();
 
-        // GET: api/ZleOdpowiedzis
+        // GET: api/ZleOdpowiedzi
         public IQueryable<ZleOdpowiedzi> GetZleOdpowiedzi()
         {
             return db.ZleOdpowiedzi;
         }
 
-        // GET: api/ZleOdpowiedzis/5
+        // GET: api/ZleOdpowiedzi/5
         [ResponseType(typeof(ZleOdpowiedzi))]
         public IHttpActionResult GetZleOdpowiedzi(int id)
         {
@@ -35,7 +35,7 @@ namespace RESTfulService.Controllers
             return Ok(zleOdpowiedzi);
         }
 
-        // PUT: api/ZleOdpowiedzis/5
+        // PUT: api/ZleOdpowiedzi/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutZleOdpowiedzi(int id, ZleOdpowiedzi zleOdpowiedzi)
         {
@@ -70,7 +70,7 @@ namespace RESTfulService.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ZleOdpowiedzis
+        // POST: api/ZleOdpowiedzi
         [ResponseType(typeof(ZleOdpowiedzi))]
         public IHttpActionResult PostZleOdpowiedzi(ZleOdpowiedzi zleOdpowiedzi)
         {
@@ -80,27 +80,12 @@ namespace RESTfulService.Controllers
             }
 
             db.ZleOdpowiedzi.Add(zleOdpowiedzi);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (ZleOdpowiedziExists(zleOdpowiedzi.idZleOdpowiedzi))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = zleOdpowiedzi.idZleOdpowiedzi }, zleOdpowiedzi);
         }
 
-        // DELETE: api/ZleOdpowiedzis/5
+        // DELETE: api/ZleOdpowiedzi/5
         [ResponseType(typeof(ZleOdpowiedzi))]
         public IHttpActionResult DeleteZleOdpowiedzi(int id)
         {

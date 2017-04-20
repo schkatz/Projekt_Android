@@ -92,60 +92,67 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\QuizModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>QuizModels.edmx</DependentUpon>
+      <LastGenOutput>QuizModels.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\QuizModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>QuizModels.edmx</DependentUpon>
+      <LastGenOutput>QuizModels.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DobreOdpowiedzisController.cs" />
-    <Compile Include="Controllers\PytaniasController.cs" />
-    <Compile Include="Controllers\ZleOdpowiedzisController.cs" />
+    <Compile Include="Controllers\DobreOdpowiedziController.cs" />
+    <Compile Include="Controllers\PytaniaController.cs" />
+    <Compile Include="Controllers\TabelaWynikowController.cs" />
+    <Compile Include="Controllers\ZleOdpowiedziController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DobreOdpowiedzi.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>QuizModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pytania.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QuizModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuizModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuizModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuizModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuizModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuizModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuizModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>QuizModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TabelaWynikow.cs">
+      <DependentUpon>QuizModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ZleOdpowiedzi.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QuizModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\QuizModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>QuizModels.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\QuizModels.edmx.diagram">
+      <DependentUpon>QuizModels.edmx</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

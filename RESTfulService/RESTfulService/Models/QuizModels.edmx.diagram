@@ -4,12 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8fda72c6e7cd40d0adde6c599c142270" Name="Diagram1">
+      <Diagram DiagramId="c1366402db014ce18ffff3b5bdc124f5" Name="Diagram1">
         <EntityTypeShape EntityType="quizModel.DobreOdpowiedzi" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="quizModel.Pytania" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="quizModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="quizModel.TabelaWynikow" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="quizModel.ZleOdpowiedzi" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <AssociationConnector Association="quizModel.FK_DobreOdpowiedzi_Pytania" ManuallyRouted="false" />
-        <AssociationConnector Association="quizModel.FK_ZleOdpowiedzi_Pytania" ManuallyRouted="false" />
+        <AssociationConnector Association="quizModel.fk_DobreOdpowiedzi_Pytania1" ManuallyRouted="false" />
+        <AssociationConnector Association="quizModel.fk_ZłeOdpowiedzi_Pytania1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

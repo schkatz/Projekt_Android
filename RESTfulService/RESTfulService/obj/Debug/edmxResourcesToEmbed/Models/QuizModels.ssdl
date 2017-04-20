@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="quizModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DobreOdpowiedzi">
+    <Key>
+      <PropertyRef Name="idDobreOdpowiedzi" />
+      <PropertyRef Name="Pytania_idPytania" />
+    </Key>
+    <Property Name="idDobreOdpowiedzi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DobreOdpowiedzi" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Pytania_idPytania" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pytania">
+    <Key>
+      <PropertyRef Name="idPytania" />
+    </Key>
+    <Property Name="idPytania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pytania" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TabelaWynikow">
+    <Key>
+      <PropertyRef Name="idTabelaWynikow" />
+    </Key>
+    <Property Name="idTabelaWynikow" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Wynik" Type="int" Nullable="false" />
+    <Property Name="ilDobrychOdp" Type="int" Nullable="false" />
+    <Property Name="Nick" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZleOdpowiedzi">
+    <Key>
+      <PropertyRef Name="idZleOdpowiedzi" />
+      <PropertyRef Name="Pytania_idPytania" />
+    </Key>
+    <Property Name="idZleOdpowiedzi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ZleOdpowiedzi" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Pytania_idPytania" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_DobreOdpowiedzi_Pytania1">
+    <End Role="Pytania" Type="Self.Pytania" Multiplicity="1" />
+    <End Role="DobreOdpowiedzi" Type="Self.DobreOdpowiedzi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pytania">
+        <PropertyRef Name="idPytania" />
+      </Principal>
+      <Dependent Role="DobreOdpowiedzi">
+        <PropertyRef Name="Pytania_idPytania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ZłeOdpowiedzi_Pytania1">
+    <End Role="Pytania" Type="Self.Pytania" Multiplicity="1" />
+    <End Role="ZleOdpowiedzi" Type="Self.ZleOdpowiedzi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pytania">
+        <PropertyRef Name="idPytania" />
+      </Principal>
+      <Dependent Role="ZleOdpowiedzi">
+        <PropertyRef Name="Pytania_idPytania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="quizModelStoreContainer">
+    <EntitySet Name="DobreOdpowiedzi" EntityType="Self.DobreOdpowiedzi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pytania" EntityType="Self.Pytania" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TabelaWynikow" EntityType="Self.TabelaWynikow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZleOdpowiedzi" EntityType="Self.ZleOdpowiedzi" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_DobreOdpowiedzi_Pytania1" Association="Self.fk_DobreOdpowiedzi_Pytania1">
+      <End Role="Pytania" EntitySet="Pytania" />
+      <End Role="DobreOdpowiedzi" EntitySet="DobreOdpowiedzi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ZłeOdpowiedzi_Pytania1" Association="Self.fk_ZłeOdpowiedzi_Pytania1">
+      <End Role="Pytania" EntitySet="Pytania" />
+      <End Role="ZleOdpowiedzi" EntitySet="ZleOdpowiedzi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
